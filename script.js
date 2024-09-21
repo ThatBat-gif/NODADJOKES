@@ -2,9 +2,13 @@ let responseCount = 0;
 let accessedSpecialSequence = false;
 
 function handleInput() {
-    const input = document.getElementById("userInput").value.toLowerCase();
+    const inputField = document.getElementById("userInput");
+    let input = inputField.value.toLowerCase();
     const response = document.getElementById("dadResponse");
     const labImage = document.getElementById("labImage");
+
+    input = input.replace(/[^a-z0-9\s]/g, ''); 
+    inputField.value = input; // Update the text box with the sanitized input
 
     response.innerHTML = "";
     labImage.style.display = "none"; 
@@ -95,5 +99,4 @@ function handleInput() {
         response.classList.remove("creepy");
     }
 }
-
 
