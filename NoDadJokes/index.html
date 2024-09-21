@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No Dad Jokes</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        body {
+            -webkit-user-select: none; /* Chrome */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* IE */
+            user-select: none; /* Standard */
+        }
+        img {
+            pointer-events: none; /* Disable interaction with images */
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;"> <!-- Disable right-click -->
+
+    <h1>No Dad Jokes</h1>
+    <input type="text" id="userInput" placeholder="Type something...">
+    <button onclick="handleInput()">Submit</button>
+
+    <p id="dadResponse"></p>
+
+    <!-- Image for 9212 response -->
+    <img id="labImage" src="lab-2002.jpg" alt="Ruined Laboratory" style="display: none;">
+
+    <script src="script.js"></script>
+
+    <script>
+        // Disable keyboard shortcuts for DevTools
+        document.addEventListener('keydown', function(event) {
+            // Disable F12 key
+            if (event.keyCode == 123) {
+                event.preventDefault();
+            }
+            // Disable Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+            if (event.ctrlKey && event.shiftKey && (event.keyCode == 73 || event.keyCode == 74)) {
+                event.preventDefault();
+            }
+            if (event.ctrlKey && event.keyCode == 85) {
+                event.preventDefault();
+            }
+        });
+
+        // Disable copying and pasting
+        document.addEventListener('copy', function(e) {
+            e.preventDefault();
+        });
+    </script>
+
+</body>
+</html>
