@@ -115,13 +115,13 @@ function handleInput() {
 
     } else {
         // When the input is not recognized, generate a random dad joke
-        response.innerHTML = generateDadJoke(input);
+        response.innerHTML = generateDadJoke();
         response.classList.remove("creepy");
     }
 }
 
-// Function to generate a dad joke based on the user's input
-function generateDadJoke(input) {
+// Function to generate a random dad joke
+function generateDadJoke() {
     const whatJokes = [
         "What do you call a magic dog? A labracadabrador!",
         "What did the ocean say to the beach? Nothing, it just waved.",
@@ -177,21 +177,23 @@ function generateDadJoke(input) {
     const whoJokes = [
         "Who am I? Well, I’m DAD, and I always know the answer!",
         "Who can hold up a ship? A-tug boat!",
-        "Who doesn't like candy? A candy cane with an attitude!",
-        "Who can you always trust? Your best friend, of course!",
-        "Who was that? That was my imaginary friend!",
-        "Who gives the best hugs? A teddy bear!",
-        "Who needs a superhero? Everyone needs someone to look up to!",
-        "Who won the race? Nobody, it was a tie!",
-        "Who is the best musician? A little guitar!",
-        "Who wants to have fun? Everyone wants to have a good time!"
+        "Who is a musician's favorite superhero? The Flatwound!",
+        "Who says I’m the king of the world? That’s just the Titanic!",
+        "Who is the best basketball player? LeBron, because he can shoot from anywhere!",
+        "Who would win in a fight between a badger and a bulldog? It depends on the venue!",
+        "Who goes there? Just me, DAD, checking in on you!",
+        "Who is the most musical fish? The bass!",
+        "Who can shave 20 times a day and still have a beard? A barber!",
+        "Who has a good sense of humor? Everyone who’s talking to me right now!"
     ];
 
-    const jokeTypes = [whatJokes, whyJokes, howJokes, whereJokes, whoJokes];
-    const randomJokeType = jokeTypes[Math.floor(Math.random() * jokeTypes.length)];
-    const randomJoke = randomJokeType[Math.floor(Math.random() * randomJokeType.length)];
-
-    return randomJoke;
+    const jokeCategories = [whatJokes, whyJokes, howJokes, whereJokes, whoJokes];
+    const selectedCategory = jokeCategories[Math.floor(Math.random() * jokeCategories.length)];
+    return selectedCategory[Math.floor(Math.random() * selectedCategory.length)];
 }
 
-
+window.onload = function () {
+    const inputField = document.getElementById("userInput");
+    inputField.value = ""; // Clear the input on load
+    inputField.placeholder = "Type Here..."; // Set placeholder text
+}
