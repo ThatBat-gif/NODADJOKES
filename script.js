@@ -1,3 +1,6 @@
+let responseCount = 0;
+let accessedSpecialSequence = false;
+
 function handleInput() {
     const inputField = document.getElementById("userInput");
     let input = inputField.value.toLowerCase();
@@ -7,6 +10,8 @@ function handleInput() {
 
     input = input.replace(/[^a-z0-9\s]/g, ''); 
     inputField.value = input; // Update the text box with the sanitized input
+
+    console.log("Sanitized Input:", input); // Log sanitized input
 
     response.innerHTML = "";
     labImage.style.display = "none"; 
@@ -63,7 +68,7 @@ function handleInput() {
         response.innerHTML = "They're all around you... waiting.";
         response.classList.add("creepy");
 
-    } else if (input.includes("what's happening")) {
+    } else if (input.includes("whats happening")) {
         response.innerHTML = "Something you were never meant to see.";
         response.classList.add("creepy");
 
@@ -89,12 +94,12 @@ function handleInput() {
         response.classList.add("creepy");
         accessedSpecialSequence = true;
 
-    // Handle "jessie 0klahoma"
+    // New condition for "Jessie Oklahoma"
     } else if (input.includes("jessie oklahoma")) {
-        // Redirect to Google Maps for Seminole, Oklahoma
-        window.open("https://www.google.com/maps/place/Seminole,+OK/@35.2360886,-96.6676423,13z/data=!3m1!4b1!4m6!3m5!1s0x87b3973a71693a1d:0x8e9f9d6389ebcebd!8m2!3d35.2245201!4d-96.670573!16zL20vMHo5eTg?entry=ttu&g_ep=EgoyMDI0MDkyMy4wIKXMDSoASAFQAw%3D%3D", "_blank");
+        window.open("https://www.google.com/maps/place/Seminole,+OK", "_blank"); // Open new tab with Google Maps
         response.innerHTML = "Searching for Seminole, Oklahoma on Google Maps... See You Soon Jessie";
         response.classList.remove("creepy");
+        response.innerHTML += `<br><img src="https://preview.redd.it/which-clickbaity-jonkler-face-would-be-better-for-my-v0-csgyiudvm76d1.jpg?width=640&crop=smart&auto=webp&s=26db1ee7471cda55bac3712c2955820facd8f01d" alt="Jonkler" style="width: 300px;">`; 
 
     } else if (accessedSpecialSequence && input.includes("they")) {
         response.innerHTML = "THEY are watching... always.";
@@ -112,5 +117,92 @@ function handleInput() {
         response.innerHTML = generateDadJoke(input);
         response.classList.remove("creepy");
     }
+}
+
+// Function to generate a dad joke based on the user's input
+function generateDadJoke(input) {
+    const whatJokes = [
+        "What do you call a magic dog? A labracadabrador!",
+        "What did the ocean say to the beach? Nothing, it just waved.",
+        "What do you call cheese that isn't yours? Nacho cheese!",
+        "What do you get when you cross a snowman and a vampire? Frostbite!",
+        "What did one wall say to the other wall? I'll meet you at the corner!",
+        "What do you call a fake noodle? An impasta!",
+        "What kind of shoes do ninjas wear? Sneakers!",
+        "What do you call an alligator in a vest? An investigator!",
+        "What do you call a bear with no teeth? A gummy bear!",
+        "What did the janitor say when he jumped out of the closet? Supplies!"
+    ];
+
+    const whyJokes = [
+        "Why don't scientists trust atoms? Because they make up everything!",
+        "Why did the scarecrow win an award? Because he was outstanding in his field!",
+        "Why don't you ever see elephants hiding in trees? Because they're so good at it!",
+        "Why did the math book look sad? Because it had too many problems.",
+        "Why was the broom late? It swept in!",
+        "Why can't you give Elsa a balloon? Because she will let it go!",
+        "Why did the bicycle fall over? Because it was two-tired!",
+        "Why did the computer go to the doctor? Because it had a virus!",
+        "Why do chicken coops only have two doors? Because if they had four, they’d be chicken sedans!",
+        "Why did the golfer bring two pairs of pants? In case he got a hole in one!"
+    ];
+
+    const howJokes = [
+        "How do you organize a space party? You planet!",
+        "How does a penguin build its house? Igloos it together!",
+        "How do you catch a squirrel? Climb a tree and act like a nut!",
+        "How do you make a tissue dance? Put a little boogie in it!",
+        "How does a scientist freshen her breath? With experi-mints!",
+        "How do you stay warm in a cold room? Go to the corner; it's always 90 degrees!",
+        "How does a train eat? It goes chew chew!",
+        "How does Moses make his coffee? Hebrews it!",
+        "How do you fix a broken pizza? With tomato paste!",
+        "How does a caterpillar get from one side of the road to the other? It uses its butterfly skills!"
+    ];
+
+    const whereJokes = [
+        "Where does the general keep his armies? In his sleevies!",
+        "Where do cows go on vacation? Moo York!",
+        "Where does a snowman keep his money? In a snow bank!",
+        "Where do fish keep their money? In riverbanks!",
+        "Where did the kid bring his ladder? To high school!",
+        "Where do you find a cow with no legs? Right where you left it!",
+        "Where do vampires get their news? From the blood bank!",
+        "Where do you go to learn how to make ice cream? Sundae school!",
+        "Where do you find a one-legged dog? Right where you left him!",
+        "Where do ghosts go on vacation? To the boo-tique!"
+    ];
+
+    const whoJokes = [
+        "Who am I? Well, I’m DAD, and I always know the answer!",
+        "Who can hold up a ship? A-tug boat!",
+        "Who doesn't like candy? Nobody!",
+        "Who said money can't buy happiness? Well, I can buy a boat!",
+        "Who is the king of the classroom? The ruler!",
+        "Who’s there? Atch! Atch who? Bless you!",
+        "Who is a mathematician’s favorite superhero? Captain Algebra!",
+        "Who let the dogs out? Woof, woof, woof, woof!",
+        "Who is a ghost's favorite musician? A boo-gie man!",
+        "Who made the biggest mistake? The one who didn’t tell me a dad joke!"
+    ];
+
+    let jokeArray;
+
+    if (input.includes("what")) {
+        jokeArray = whatJokes;
+    } else if (input.includes("why")) {
+        jokeArray = whyJokes;
+    } else if (input.includes("how")) {
+        jokeArray = howJokes;
+    } else if (input.includes("where")) {
+        jokeArray = whereJokes;
+    } else if (input.includes("who")) {
+        jokeArray = whoJokes;
+    } else {
+        return "I don't have a joke for that!";
+    }
+
+    const randomJoke = jokeArray[Math.floor(Math.random() * jokeArray.length)];
+    return randomJoke;
 }
 

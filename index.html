@@ -26,59 +26,10 @@
 
     <p id="dadResponse"></p>
 
-    <!-- Image for 9212 response -->
+    <!-- Image for lab response -->
     <img id="labImage" src="lab-2002.jpg" alt="Ruined Laboratory" style="display: none;">
-    <img id="JHImage" src="Judy-Hops.jpg" style="display:none;" alt="Image" />
-
+    <img id="JHImage" src="Judy-Hops.jpg" alt="Judy Hops" style="display:none;" />
 
     <script src="script.js"></script>
-
-    <script>
-        // Function to handle the user input and perform specific actions
-        function handleInput() {
-            const input = document.getElementById("userInput").value.toLowerCase();
-            const response = document.getElementById("dadResponse");
-
-            // Sanitize and check if the input contains 'jesey oklahoma'
-            const sanitizedInput = input.replace(/[^a-z0-9\s]/g, '');
-
-            if (sanitizedInput.includes("jessie oklahoma")) {
-                // Open a new tab to Google Maps showing Seminole, Oklahoma
-                window.open('https://www.google.com/maps/place/Seminole,+OK', '_blank');
-                response.innerHTML = "Opening Google Maps for Seminole, Oklahoma.";
-            } else if (sanitizedInput.includes("9212")) {
-                // Show the lab image for input "9212"
-                document.getElementById("labImage").style.display = "block";
-                response.innerHTML = "Displaying ruined laboratory.";
-            } else if (sanitizedInput.includes("judy hops")) {
-                // Show the Judy Hops image
-                document.getElementById("JHImage").style.display = "block";
-                response.innerHTML = "Displaying Judy Hops.";
-            } else {
-                response.innerHTML = "Input not recognized. Please try again.";
-            }
-        }
-
-        // Disable keyboard shortcuts for DevTools
-        document.addEventListener('keydown', function(event) {
-            // Disable F12 key
-            if (event.keyCode == 123) {
-                event.preventDefault();
-            }
-            // Disable Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
-            if (event.ctrlKey && event.shiftKey && (event.keyCode == 73 || event.keyCode == 74)) {
-                event.preventDefault();
-            }
-            if (event.ctrlKey && event.keyCode == 85) {
-                event.preventDefault();
-            }
-        });
-
-        // Disable copying and pasting
-        document.addEventListener('copy', function(e) {
-            e.preventDefault();
-        });
-    </script>
-
 </body>
 </html>
