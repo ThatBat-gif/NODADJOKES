@@ -114,6 +114,7 @@ function handleInput() {
         response.classList.add("creepy");
 
     } else {
+        // When the input is not recognized, generate a random dad joke
         response.innerHTML = generateDadJoke(input);
         response.classList.remove("creepy");
     }
@@ -176,33 +177,21 @@ function generateDadJoke(input) {
     const whoJokes = [
         "Who am I? Well, I’m DAD, and I always know the answer!",
         "Who can hold up a ship? A-tug boat!",
-        "Who doesn't like candy? Nobody!",
-        "Who said money can't buy happiness? Well, I can buy a boat!",
-        "Who is the king of the classroom? The ruler!",
-        "Who’s there? Atch! Atch who? Bless you!",
-        "Who is a mathematician’s favorite superhero? Captain Algebra!",
-        "Who let the dogs out? Woof, woof, woof, woof!",
-        "Who is a ghost's favorite musician? A boo-gie man!",
-        "Who made the biggest mistake? The one who didn’t tell me a dad joke!"
+        "Who doesn't like candy? A candy cane with an attitude!",
+        "Who can you always trust? Your best friend, of course!",
+        "Who was that? That was my imaginary friend!",
+        "Who gives the best hugs? A teddy bear!",
+        "Who needs a superhero? Everyone needs someone to look up to!",
+        "Who won the race? Nobody, it was a tie!",
+        "Who is the best musician? A little guitar!",
+        "Who wants to have fun? Everyone wants to have a good time!"
     ];
 
-    let jokeArray;
+    const jokeTypes = [whatJokes, whyJokes, howJokes, whereJokes, whoJokes];
+    const randomJokeType = jokeTypes[Math.floor(Math.random() * jokeTypes.length)];
+    const randomJoke = randomJokeType[Math.floor(Math.random() * randomJokeType.length)];
 
-    if (input.includes("what")) {
-        jokeArray = whatJokes;
-    } else if (input.includes("why")) {
-        jokeArray = whyJokes;
-    } else if (input.includes("how")) {
-        jokeArray = howJokes;
-    } else if (input.includes("where")) {
-        jokeArray = whereJokes;
-    } else if (input.includes("who")) {
-        jokeArray = whoJokes;
-    } else {
-        return "I don't have a joke for that!";
-    }
-
-    const randomJoke = jokeArray[Math.floor(Math.random() * jokeArray.length)];
     return randomJoke;
 }
+
 
